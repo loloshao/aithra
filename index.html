@@ -961,7 +961,7 @@ html:not(.kbd-on):not(.turn-off) .turn{position:fixed;z-index:2147482000;inset:0
 :root:root .sub{font:300 clamp(1rem,1.26vw,1.15rem)/1.5 var(--sans);letter-spacing:.004em;color:rgb(var(--fg)/.74)}
 :root:root .sub b{font-weight:500;color:rgb(var(--fg))}
 :root:root .say{font:300 clamp(.98rem,1.3vw,1.18rem)/1.3 var(--sans);color:rgb(var(--fg)/.8);text-wrap:balance}
-:root:root .whisper{font:500 10.5px/1.2 var(--sans);letter-spacing:.28em;text-transform:uppercase}
+:root:root .whisper{font:400 clamp(1rem,1.3vw,1.22rem)/1.2 var(--sans);letter-spacing:.012em;text-transform:none}
 :root:root .q7-ans{font:500 10.5px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:rgb(var(--fg)/.62)}
 :root:root .q8-b1{font:300 clamp(1.3rem,min(3.3vw,5.8vh),3.1rem)/1.18 var(--sans);letter-spacing:-.02em;color:rgb(var(--fg)/.6)}
 :root:root .q8-b1 i{font-style:normal;font-weight:400;color:rgb(var(--fg))}
@@ -986,7 +986,7 @@ html:not(.kbd-on):not(.turn-off) .turn{position:fixed;z-index:2147482000;inset:0
 @media(min-width:600px) and (max-width:899px){:root:root .k5-fl{font-size:1.04rem}:root:root .k5-q blockquote{font-size:1.2rem}:root:root .k5-wn{font-size:.96rem}}
 @media(max-width:760px){:root:root .e6-cap{font-size:.84rem}}
 @media(max-width:899px){:root:root .k5-run h2{font-size:1.2rem}}
-@media(max-width:700px){:root:root .sub{font-size:.94rem;line-height:1.42}:root:root .q8-b1{font-size:1.32rem;line-height:1.24}:root:root .whisper,:root:root .q7-ans{font-size:10px;letter-spacing:.24em}}
+@media(max-width:700px){:root:root .sub{font-size:.94rem;line-height:1.42}:root:root .q8-b1{font-size:1.32rem;line-height:1.24}:root:root .q7-ans{font-size:10px;letter-spacing:.24em}}
 
 /* ══ section two ══
    The clock. One figure at a time, five down to nought, each seated exactly on its second. The figures stand on a strip behind a window
@@ -1006,6 +1006,29 @@ html:not(.kbd-on):not(.turn-off) .turn{position:fixed;z-index:2147482000;inset:0
 :root:root .g4 .rr2{color:rgb(var(--fg)/.6)}
 /* the tag over each engagement keeps to one line beside the star */
 @media(min-width:1181px){.e6-tag{letter-spacing:.15em;white-space:nowrap}}
+
+/* ══ the phone, second pass ══ */
+/* the search rests in the corner of the bar, beside the name: the name, "helps you" and the headline then read down as one sentence */
+@media(max-width:700px){
+.toprow{flex-direction:row;gap:0}
+.bar{position:absolute;right:var(--gx);top:calc((var(--navh) - 34px)/2 - var(--navh));align-self:auto;height:34px;gap:7px;padding:0 13px 0 11px;font-size:clamp(10.5px,3.2vw,12.5px)}
+.bar .mag{width:14px;height:14px}
+.bar .res{display:none!important}
+.bar .caret{margin-left:-5px}
+.whisper{margin-top:-6px}
+}
+/* ours, when it is passed over */
+.tag2{height:24px;padding:0 11px;border-radius:99px}
+.tag2 span{font:500 9px/1 var(--sans);letter-spacing:.2em}
+.tag2.no{background:#F6F3EC;color:rgb(11 18 43/.8);box-shadow:inset 0 0 0 1px rgb(11 18 43/.36),0 8px 18px -10px rgb(11 18 43/.4)}
+/* a stage is as tall as the screen is while the browser's bars are showing. Once they hide, the screen is taller than the stage:
+   what shows under it is then more of its own ground, never the page behind */
+.hero,.q7-stage,.k5-stage{box-shadow:0 30vh 0 0 rgb(var(--ap,var(--bg,246 243 236)))}
+.k5-track{clip-path:inset(0)}
+@media(max-width:700px){.hero::after{content:"";position:absolute;z-index:1;left:0;right:0;bottom:0;height:44px;pointer-events:none;background:linear-gradient(rgb(var(--ap,var(--bg))/0),rgb(var(--ap,var(--bg))))}}
+/* less bare page between the sections on a phone */
+@media(max-width:760px){.e6{padding-top:60px;padding-bottom:64px}}
+@media(max-width:940px){.b8-live{margin-bottom:-36px}.b8-in{padding-bottom:40px}}
 </style>
 <div class="wrap" id="wrap">
 <section class="hero" id="hero" aria-label="Introduction">
@@ -1019,7 +1042,7 @@ html:not(.kbd-on):not(.turn-off) .turn{position:fixed;z-index:2147482000;inset:0
   <p class="say" id="say" aria-hidden="true">Right now, someone is searching for what you do.</p>
   <div class="copy" id="copy">
     <div class="toprow">
-      <p class="whisper" id="wh">Aithra helps you</p>
+      <p class="whisper" id="wh">helps you</p>
       <div class="bar" id="bar" role="img" aria-label="A search for fractional CFO for startups returns 214 results">
         <svg class="bx" aria-hidden="true"><rect id="bxr" x=".75" y=".75" rx="20" ry="20" pathLength="1"/></svg>
         <svg class="mag" id="mag" viewBox="0 0 20 20" width="17" height="17" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.6" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M12.8 12.8L18 18" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
@@ -1670,7 +1693,7 @@ function layout(){  var r=hero.getBoundingClientRect();W=r.width;H=r.height;DPR=
   var me={F:ch,U:-112,side:0,idx:0,mid:0,ch:true,boost:0,target:0,delay:TL.chd||.72};items.push(me);
   var sr=prng(7),stars=[];for(i=0;i<(narrow?20:50);i++){var sx=sr()*W,sy=sr()*gyN*.6,ra=.45+sr()*.6,al=.08+sr()*.22;if(sx>hb.left-r.left-20&&sx<hb.right-r.left+20&&sy>hb.top-r.top-10&&sy<cb+16)continue;stars.push([sx,sy,ra,al])}
   var rip=[],y=3;while(y<H-gyN){rip.push([y,.12+sr()*.3,.6+sr()*.8]);y+=3+sr()*7}
-  var y0=H*(narrow?.36:.4),sc0=narrow?1.05:1.16,bw0=Math.min(Math.max(bw1+90,narrow?W-64:540),(W-28)/sc0);
+  var y0=H*(narrow?.36:.4),sc0=narrow?1.3:1.16,bw0=Math.min(Math.max(bw1+90,narrow?W-64:540),(W-28)/sc0);
   L={narrow:narrow,sN:sN,gyN:gyN,cxN:cxN,s0:s0,gy0:gy0,cx0:cx0,items:items,ch:me,stars:stars,rip:rip,bw1:bw1,bw0:bw0,sc0:sc0,R:br.right-r.left,cy:br.top-r.top+br.height/2,y0:y0};
   say.style.top=(y0-br.height*sc0/2-16-say.offsetHeight)+"px";
   rf.width=Math.max(2,Math.ceil(W/4));rf.height=Math.max(2,Math.ceil(H*.44/4));
@@ -1757,7 +1780,7 @@ function apply(t){now=t;var kd=duskAt(t),kl=smooth((t-TL.light)/TL.lightDur),cf=
   if(XP>0){kd=dusk3();kl=0}
   if(YP>0){kl=state4().kl;kd=1}
   var m=smooth((kd-.55)/.13),fg=mixc(INK_D,INK_N,m),acc=mixc(GOLD_D,GOLD_N,m),st=hero.style;
-  st.setProperty("--fg",tri(fg));st.setProperty("--bg",tri(stops(SKY_TOP,kd)));st.setProperty("--accent",tri(acc));
+  st.setProperty("--fg",tri(fg));st.setProperty("--bg",tri(stops(SKY_TOP,kd)));st.setProperty("--ap",tri(stops(GROUND,kd)));st.setProperty("--accent",tri(acc));
   var out=smooth((t-TL.go)/.35);say.style.opacity=smooth((t-.02)/.4)*(1-out);say.style.transform="translateY("+(-10*out).toFixed(1)+"px)";
   bxr.style.strokeDashoffset=1-ease((t-.04)/.5);
   mag.style.opacity=smooth((t-.15)/.3);var pulse=Math.sin(clamp((t-TL.go+.08)/.34,0,1)*Math.PI);mag.style.transform="scale("+(1+.22*pulse)+")";
@@ -1848,7 +1871,7 @@ function layoutResults(){if(MODE2==="wall"){layoutWall();return}var narrow=L.nar
     tenEl.style.top=Math.round(wn.y+(wh-th)/2-6)+"px"}
   wn.top=narrow?52:60;wn.bh=wn.h-wn.top;wn.rh=rh;wn.pit=rh+8;wn.sr=rh/CH;wn.nFly=Math.max(1,Math.floor((wn.bh-12)/wn.pit));
   list.forEach(function(cd,i){cd.row=i});
-  RS={s1:s1,s2:sS,cam1:{x:bx,y:by-H*.045/s1},camS:{x:bx,y:by},cards:cards,vis:vis,hv:hv,win:win,list:list,navh:navh,wn:wn,stk:stk,pillY:narrow?L.cy:navh+24,pill:{x:wn.x+(narrow?12:16)+L.bw1/2,y:wn.y+wn.top/2}};
+  RS={s1:s1,s2:sS,cam1:{x:bx,y:by-H*.045/s1},camS:{x:bx,y:by},cards:cards,vis:vis,hv:hv,win:win,list:list,navh:navh,wn:wn,stk:stk, pillY:narrow?navh+25:navh+24,pill:{x:wn.x+(narrow?12:16)+L.bw1/2,y:wn.y+wn.top/2}};
   layoutFilm()}
 
 /* the view. For the first part the whole wall is seen through one camera. As the listings go into the window, the ones that become
@@ -1893,7 +1916,7 @@ function drawCards(){if(MODE2==="wall"){drawWall();return}var wn=RS.wn,D=DPR,fly
 /* over the wall: the wash that sets it back */
 function drawOver(){if(MODE2==="wall"){overWall();return}var D=DPR,f=focusOf();c.setTransform(D,0,0,D,0,0);if(f.veil>.004){c.globalAlpha=Math.min(.9,f.veil);c.fillStyle="#F6F3EC";c.fillRect(0,0,W,H)}c.globalAlpha=1}
 
-function applyScroll(){var p=SP,np=smooth((p-.08)/.1),wn=RS.wn,n=L.narrow;navx.forEach(function(e){e.style.opacity=np;e.style.pointerEvents=np>.5?"auto":"none";e.style.visibility=np>0?"visible":"hidden"});
+function applyScroll(){var p=SP,np=L.narrow?smooth((p-.1)/.08):smooth((p-.08)/.1),wn=RS.wn,n=L.narrow;navx.forEach(function(e){e.style.opacity=np;e.style.pointerEvents=np>.5?"auto":"none";e.style.visibility=np>0?"visible":"hidden"});
   /* the switch between the two versions of this section shows only while the section is on the stage */
   var sv=smooth((p-.3)/.1)*(XP>0?1-smooth(XP/.05):1);sw2.style.opacity=sv;sw2.style.visibility=sv>0?"visible":"hidden";sw2.style.pointerEvents=sv>.5?"auto":"none";
   if(MODE2==="wall"){applyWall();return}
@@ -2154,8 +2177,8 @@ function layoutWall(){var narrow=L.narrow,navh=$(".nav").offsetHeight,stk=narrow
   L.items.filter(function(it){return it.mi<0}).sort(function(a,b){return Math.abs(a.mid)-Math.abs(b.mid)}).forEach(function(it){var j=0;while(j<free.length&&(free[j].X+CW/2-bx)*it.side<0)j++;if(j>=free.length)j=0;var cd=free.splice(j,1)[0];cd.F=it.F;it.home=cd});
   cards.forEach(function(cd){var sp=cd.F.x1-cd.F.x0;cd.ts=Math.min(74/sp,74/cd.F.H)});
   RS=WS={s1:s1,sF:sF,cam1:{x:bx,y:by-H*.045/s1},camF:camF,cards:cards,cols:cols,rows:rows,vis:vis,hv:hv,win:win,feats:feats,navh:navh,stk:stk,ty:ty,pk:pk,dk:D3p,ln:LN,
-    glow:null,restP:Math.max(.715,.41+cards.reduce(function(m,cd){return Math.max(m,cd.ring)},0)*.024),img:null,key:"",key2:"",pillY:narrow?L.cy:navh+24,
-    pill:{x:W/2,y:narrow?L.cy:navh+24},band:band,hot:null,stops:stops,cyc:cyc,marks:"",mk:[]};
+    glow:null,restP:Math.max(.715,.41+cards.reduce(function(m,cd){return Math.max(m,cd.ring)},0)*.024),img:null,key:"",key2:"", pillY:narrow?navh+25:navh+24,
+    pill:{x:W/2,y:narrow?navh+25:navh+24},band:band,hot:null,stops:stops,cyc:cyc,marks:"",mk:[]};
   pk.forEach(function(e,j){thumbOf($("canvas",e),feats[j].F)});
   tiltSet(0);apply3W()}
 
@@ -2205,8 +2228,8 @@ function overWall(){var v=focusW().veil;if(v>.004){c.setTransform(DPR,0,0,DPR,0,
 /* what is set in type: the search, the statement, and the three */
 function applyWall(){var p=SP,x=XP;camWall();TLIT=gold2();var xo=x>0?1-smooth(x/.05):1,dk=WS.dk,P=stage3(),st=smooth((p-.46)/.12),out=smooth((P-2.05)/.5);
   /* the search: from the hero to the head of the wall, and it stays there */
-  if(p>0){var bp=glide((p-.05)/.2);bar.style.transform="translate3d("+((W/2-(L.R-L.bw1/2))*bp).toFixed(2)+"px,"+((WS.pillY-L.cy)*bp).toFixed(2)+"px,0) scale("+(1+.06*bp*(1-smooth((p-.5)/.2))).toFixed(4)+")";bar.style.setProperty("--bk",(.94*bp).toFixed(3))}else bar.style.setProperty("--bk","0");
-  bar.style.opacity=xo;
+  if(p>0){var bp=L.narrow?glide((p-.01)/.09):glide((p-.05)/.2);bar.style.transform="translate3d("+((W/2-(L.R-L.bw1/2))*bp).toFixed(2)+"px,"+((WS.pillY-L.cy)*bp).toFixed(2)+"px,0) scale("+(1+.06*bp*(1-smooth((p-.5)/.2))).toFixed(4)+")";bar.style.setProperty("--bk",(.94*bp).toFixed(3))}else bar.style.setProperty("--bk","0");
+  bar.style.opacity=(xo*(L.narrow?lerp(1,.5,st):1)).toFixed(3);
   var f=focusW(),px=f.blur;cv.style.filter=px>.12?"blur("+px.toFixed(2)+"px)":"none";cv.style.transform=px>.12?"scale("+(1+.012*Math.min(1,px/4)).toFixed(4)+")":"none";
   frostT.style.opacity=(smooth((p-.3)/.1)*xo).toFixed(3);frostT.style.height=(WS.pillY+82).toFixed(1)+"px";frostL.style.opacity=(WS.stk?st*xo*.92:0).toFixed(3);frostC.style.opacity=(WS.stk?0:st*xo).toFixed(3);
   /* the statement: the line, then the 10, then "seconds to" beside it. It goes only when the three under it have all been said */
@@ -2246,7 +2269,7 @@ function pointAt(t){var f=WS.feats,mk=[],ring=0,i;function on_(cd,fx,fy,dx,dy){v
 function afterWall(){if(!WS||MODE2!=="wall"||!L.cp)return;var t=F2.t,on=F2.on,P=stage3(),foc=1-smooth(P/.5),bk=back2(),xo=XP>0?1-smooth(XP/.05):1,hv=WS.hv,b=cardXY(hv),th=tagH._h||22,live=on&&SP>=.84;
   /* each of the two has its word, standing on the top edge of its listing */
   function flag(e,m,o){var ax=m.e+m.a*46,ay=m.f+m.b*46,x=clamp(ax-14,6,W-6-e._w);e.style.opacity=o.toFixed(3);e.style.transform="translate3d("+x.toFixed(1)+"px,"+(ay-9-th+6*(1-o)).toFixed(1)+"px,0)";e.style.setProperty("--sx",clamp(ax-x,9,e._w-9).toFixed(1)+"px")}
-  flag(tagH,b.m,0);flag(tagW,cardM(WS.win),0);
+  flag(tagH,b.m,on?smooth((t-FW.no-.25)/.4)*xo*(1-smooth((P-2.15)/.5)):0);flag(tagW,cardM(WS.win),0);
   /* a look: the listing lifts off the wall, lying as the wall lies, and comes up to face the reader. It is small, and it is all a stranger sees */
   var T=[FW.a,FW.b,FW.h,[FW.w,FW.wout-.12]];
   WS.feats.forEach(function(cd,j){var e=WS.pk[j],k=0;if(k<=.004){if(e._k!==0){e._k=0;e.style.opacity=0;e.style.visibility="hidden"}return}e._k=k;
@@ -2296,7 +2319,7 @@ rr2.onclick=function(){film2Play()};
 function drift(){}
 
 /* the search is asked again and again, in the words of one trade after another: from the hero on, for as long as the wall is on the page */
-(function(){var t0=0,PD=5.4;setInterval(function(){if(calm||!L||document.hidden||qEl._n!==QUERY.length||wrapEl.getBoundingClientRect().bottom<0)return;var now=Date.now();if(!t0)t0=now+2400;var tt=(now-t0)/1000;if(tt<0)return;
+(function(){var t0=0,PD=5.4;setInterval(function(){if(calm||!L||document.hidden||qEl._n!==QUERY.length||wrapEl.getBoundingClientRect().bottom<0)return;if(t0&&SP>.3&&XP<=0&&(L.narrow||(F2.on&&F2.t<F2END))&&QS.indexOf(qEl.textContent)>=0){t0+=60;return}var now=Date.now();if(!t0)t0=now+2400;var tt=(now-t0)/1000;if(tt<0)return;
     var cy=Math.floor(tt/PD),ph=tt-cy*PD,n=QS.length,a=QS[cy%n],b=QS[(cy+1)%n],e1=PD-1.95,e2=PD-1.45,e3=PD-1.25,sq=ph<e1?a:ph<e2?a.slice(0,Math.ceil(a.length*(1-(ph-e1)/(e2-e1)))):ph<e3?"":b.slice(0,Math.floor(b.length*Math.min(1,(ph-e3)/1.1)));
     if(qEl._q!==sq){qEl._q=sq;qEl.textContent=sq}},60)})();
 
@@ -2659,7 +2682,7 @@ document.addEventListener("click",function(e){var a=e.target.closest&&e.target.c
   biz.addEventListener("input",function(){sync(biz)});si.addEventListener("input",function(){sync(si)});reach.addEventListener("input",function(){reach.classList.remove("bad")});
   si.addEventListener("focus",function(){sgn.classList.add("on")});si.addEventListener("blur",function(){sgn.classList.remove("on")});biz.addEventListener("focus",function(){sgn.classList.add("on")});biz.addEventListener("blur",function(){sgn.classList.remove("on")});
   function tier(){var v=tierIn.value;re.hidden=!v;reB.textContent=v}tierIn.addEventListener("change",tier);reX.addEventListener("click",function(){tierIn.value="";tier()});
-  function draw(){var w=pic.clientWidth,h=pic.clientHeight,D=DPR;if(!w||!h)return;fitCanvas(cvs,w,h);var narrow=w<940,F=BY.Pleat,k=F.k,gy=Math.round(narrow?h*.8:Math.min(h*.82,h-112)),s=narrow?Math.min((gy-74)/F.H,w*.5/224):Math.min((gy-96)/F.H,w*.3/224),cx=narrow?w*.5:w*.735,kl=smooth((ent-.2)/.5),g,u;
+  function draw(){var w=pic.clientWidth,h=pic.clientHeight,D=DPR;if(!w||!h)return;fitCanvas(cvs,w,h);var narrow=w<940,F=BY.Pleat,k=F.k,gy=Math.round(narrow?h*.86:Math.min(h*.82,h-112)),s=narrow?Math.min((gy-74)/F.H,w*.5/224):Math.min((gy-96)/F.H,w*.3/224),cx=narrow?w*.5:w*.735,kl=smooth((ent-.2)/.5),g,u;
     /* carried: it starts where the front before it stands at this moment, crosses, and settles */
     if(CARRY&&window.__E6){var E=window.__E6,er=E.el.getBoundingClientRect(),pr=pic.getBoundingClientRect(),kq=KQ;s=lerp(E.s,s,kq);gy=lerp(er.top-pr.top+E.gy,gy,kq);cx=lerp(er.left-pr.left+E.cx,cx,kq);kl=1}
     if(!CARRY)sgn.style.pointerEvents=narrow?"none":"auto";
@@ -2789,7 +2812,7 @@ function lineStageA(id){var sec=$("#"+id);if(!sec)return;
       qL=$$(".q8-q .l",sec),rest=$(".q9-rest",sec),restW=$(".q9-rest .q9-w",sec),nm=$$(".q9-nm",sec),chs=$$(".q8-ch",sec),th=$(".q9-th",sec),thh=$(".q9-h",sec),thW=$$(".q9-h .w",sec),the=$(".q9-e",sec),nv=$("#nv"),brand=$("#nv .brand"),bdot=$("#nv .brand i"),
       K={sink:[.9,1.75],wr:1.9,hand:[3.15,4.05],A:[4.2,5.2],C:[5.2,6.3],E:[6.3,7.6],P:[7.75,9.3],W:[9.5,10.3],end:10.75},CHD=[1.9,1.7,3.3],CHH=[1.1,1.5,.5],CT=0,UPe=-99,MK=[null,null],OKN=[false,false],NX=.1,FD=window.__LNFD||0,T1={hold:2.0,up:.85,q0:2.75,ql:1.25,qg:.42,go:4.3,end:4.5},TW={sk:1.9,dv0:1.45,dvd:.8,dvs:.1,st0:2.02,std:1.15,tag0:2.6,tagd:1.15,end:3.85},
       G=null,UT=0,UC=-99,TAU=0,TAU1=0,IN=false,OUT=true,raf=0,last=0,tone=LIGHT,TG=.34,WORD="AITHRA",tkey="",LNH=false,i;
-  if(window.innerWidth<700)K={sink:[.7,1.4],wr:1.5,hand:[2.2,2.95],A:[3.1,4.1],C:[4.1,5.2],E:[5.2,6.5],P:[6.65,8.2],W:[8.4,9.2],end:9.65};
+  if(window.innerWidth<700)K={sink:[.7,1.4],wr:1.5,hand:[2.55,3.3],A:[3.45,4.45],C:[4.45,5.55],E:[5.55,6.85],P:[7,8.55],W:[8.75,9.3],end:9.75};
   TN[id]=function(){return tone};tr.style.height=Math.round((K.end+FD)*74+100)+"vh";if(FD){sec.style.marginTop="calc(-100vh - "+(FD*74).toFixed(1)+"vh)";sec.style.background="none";sec.style.pointerEvents="none";st.style.visibility="hidden"}
   /* the scaffold of each letter: one stroke from the ground and back. x runs 0 to 1 across the letter as it is set, y 0 to 1 up to the top of a capital */
   var Rp=[[.17,0],[.17,1],[.47,1]];for(i=1;i<=14;i++){var a=Math.PI/2-Math.PI*i/14;Rp.push([.47+.27*Math.cos(a),.75+.25*Math.sin(a)])}Rp.push([.17,.5],[.42,.5],[.98,0]);
@@ -2802,11 +2825,11 @@ function lineStageA(id){var sec=$("#"+id);if(!sec)return;
   function wipe(e,k){e.style.clipPath=e.style.webkitClipPath="inset(-30% "+((1-k)*100).toFixed(2)+"% -40% -8%)"}
   function show(e,o){if(o<=.004){if(e._o!==0){e._o=0;e.style.opacity=0;e.style.visibility="hidden"}return false}e._o=o;e.style.visibility="visible";e.style.opacity=o.toFixed(3);return true}
 
-  function layout(){var W_=st.clientWidth,H_=st.clientHeight;if(!W_||!H_||!L)return;var narrow=W_<700,stk=W_<900,gx=parseFloat(getComputedStyle(st).getPropertyValue("--gx"))||W_*.054,nh=$("#nv").offsetHeight||70;fitCanvas(cvs,W_,H_);
-    var gy=Math.round(H_*(narrow?.79:.8)),FAM="Marcellus, Georgia, serif",FAMD="DM Serif Display, Georgia, serif";x.setTransform(1,0,0,1,0,0);x.font="300 100px "+FAM;
+  function layout(){var W_=st.clientWidth,H_=st.clientHeight;if(!W_||!H_||!L)return;var lk_=[W_,H_,$("#nv").offsetHeight,document.fonts?document.fonts.status:"",window.innerWidth].join("|"),had_=!!G;if(had_&&st._lk===lk_&&st._L===L){onS();return}st._lk=lk_;st._L=L;var narrow=W_<700,stk=W_<900,gx=parseFloat(getComputedStyle(st).getPropertyValue("--gx"))||W_*.054,nh=$("#nv").offsetHeight||70;fitCanvas(cvs,W_,H_);
+    var gy=narrow?Math.round(Math.min(H_*.86,H_-112)):Math.round(H_*.8),FAM="Marcellus, Georgia, serif",FAMD="DM Serif Display, Georgia, serif";x.setTransform(1,0,0,1,0,0);x.font="300 100px "+FAM;
     /* the mark: its own letters, measured, so that the scaffold stands exactly where each will rise */
     var cap=(x.measureText("H").actualBoundingBoxAscent||63)/100,gl=WORD.split("").map(function(ch){var m=x.measureText(ch),l=m.actualBoundingBoxLeft||0,r=m.actualBoundingBoxRight||m.width;return {ch:ch,l:l/100/cap,w:(l+r)/100/cap}}),
-        WU=gl.reduce(function(m,g){return m+g.w},0)+TG*(gl.length-1),Hc=Math.min((W_-2*gx)*(narrow?.97:.88)/WU,(gy-nh-70)*.62),x0=(W_-WU*Hc)/2,segs=[],cur=[x0-Hc*.9,0],cx=x0,tot=0;
+        WU=gl.reduce(function(m,g){return m+g.w},0)+TG*(gl.length-1),Hc=Math.min((W_-2*gx)*(narrow?.9:.88)/WU,(gy-nh-70)*.62),x0=(W_-WU*Hc)/2,segs=[],cur=[x0-Hc*.9,0],cx=x0,tot=0;
     function add(b,d,li){var dx=b[0]-cur[0],dy=b[1]-cur[1],len=Math.sqrt(dx*dx+dy*dy);if(len<.01)return;var w=len*(d?1:.5);segs.push({a:cur,b:b,d:d,li:li,c0:tot,L:w});tot+=w;cur=b}
     gl.forEach(function(g,li){var p=SK[g.ch],w=g.w*Hc;g.x=cx;add([cx+p[0][0]*w,0],false,li);p.forEach(function(q,j){if(j)add([cx+q[0]*w,q[1]*Hc],true,li)});cx+=(g.w+TG)*Hc});
     var xR=cx-TG*Hc;add([xR+Hc*.3,0],false,6);add([cur[0],Hc*.48],false,6);
@@ -2814,9 +2837,9 @@ function lineStageA(id){var sec=$("#"+id);if(!sec)return;
     /* the two beats of type, the question as it is kept, and the street under them */
     [b1,qh,ace,rest,how].forEach(function(e){e.style.transform="none"});b1.style.width=narrow?(W_-2*gx)+"px":"";
     var bw=b1.offsetWidth,bh=b1.offsetHeight,bf=parseFloat(getComputedStyle(b1).fontSize),s0=Math.min(1,(W_-2*gx)/bw),s1=Math.max(.34,(narrow?15.5:24)/bf)*s0,y1=Math.round(nh+(narrow?6:clamp(H_*.02,6,22))),
-        qw=qh.offsetWidth,qhh=qh.offsetHeight,sq=Math.min(1,(W_-2*gx)/qw),qy=Math.round(y1+bh*s1+(narrow?8:clamp(H_*.018,6,18))),qB=qy+qhh*sq,ss=clamp((gy-qB-(narrow?12:24))/484,.16,H_*(narrow?.22:.36)/400),
+        qw=qh.offsetWidth,qhh=qh.offsetHeight,sq=Math.min(1,(W_-2*gx)/qw),qy=Math.round(y1+bh*s1+(narrow?8:clamp(H_*.018,6,18))),qB=qy+qhh*sq,ss=clamp((gy-qB-(narrow?12:24))/484,.16,H_*(narrow?.3:.36)/400),
         sK=sq*(narrow?.62:.5),qk={x:(W_-qw*sK)/2,y:0,s:sK};
-    qk.y=Math.round(nh+Math.max(narrow?4:clamp(H_*.015,4,16),(gy-Hc-ans.offsetHeight-34-nh-qhh*sK)*.4));var far=0,our=null;L.items.forEach(function(it){far=Math.max(far,Math.abs(it.mid));if(it.ch)our=it});
+    qk.y=Math.round(nh+Math.max(narrow?4:clamp(H_*.015,4,16),(gy-Hc-ans.offsetHeight-34-nh-qhh*sK)*(narrow?.78:.4)));var far=0,our=null;L.items.forEach(function(it){far=Math.max(far,Math.abs(it.mid));if(it.ch)our=it});
     /* the tagline under the line, ranged to the right-hand end of the name; and the same words as the title of what follows */
     var fr=parseFloat(getComputedStyle(rest).fontSize),rw=rest.offsetWidth,rh=rest.offsetHeight,LS=narrow?clamp(H_*.105,54,96):stk?clamp(Math.min(H_*.15,W_*.17),96,170):Math.min(H_*.27,W_*.145,260),chH=0,it2,aw,ah,yA,below,sR,rT,chP,lim=stk?W_-gx:W_*.53;
     chs.forEach(function(e){e.style.transform="none";e.style.width=Math.round(stk?W_-2*gx:Math.min(W_*.45,640))+"px";chH=Math.max(chH,e.offsetHeight)});
@@ -2830,7 +2853,7 @@ function lineStageA(id){var sec=$("#"+id);if(!sec)return;
     var bcx,bs0;if(stk){bcx=W_/2;bs0=clamp(Math.min((gy-(chP.y+chH)-(narrow?12:26))/384,W_*.52/224),.2,1.6)}else{bcx=W_*.745;bs0=Math.min((gy-nh-40)/384,W_*.4/224)}
     /* the word, at the foot: what all of it was */
     /* the ace: said over the whole street, seen from further off. The view stands back until ours is one front among many, and the only one lit */
-    var sP=stk?Math.min(bs0*.74,H_*(narrow?.2:.24)/384):clamp(H_*.3/384,.3,bs0*.82),bxP=(stk?W_*.5:W_*.69)-112*sP,thP={x:gx,y:nh,ey:gy+Math.round(clamp(H_*.026,11,24))};
+    var sP=stk?Math.min(bs0*.74,H_*(narrow?.3:.24)/384):clamp(H_*.3/384,.3,bs0*.82),bxP=(stk?W_*.5:W_*.69)-112*sP,thP={x:gx,y:nh,ey:gy+Math.round(clamp(H_*.026,11,24))};
     if(th){th.style.transform="none";thh.style.fontSize="100px";var w100=4,hs_,bh9;thW.forEach(function(e){w100=Math.max(w100,e.offsetWidth+4)});
       if(stk){hs_=clamp(Math.min((W_-2*gx)/w100*100,H_*.105),34,150);thh.style.fontSize=hs_.toFixed(1)+"px";bh9=th.offsetHeight;thP.y=Math.round(nh+(narrow?10:24));sP=Math.min(sP,Math.max(.16,(gy-(thP.y+bh9)-(narrow?16:28))/384));bxP=W_*.5-112*sP}
       else{var tS=gy-364*sP,zone=tS-nh-26;hs_=clamp(Math.min((bxP-gx-clamp(W_*.03,24,48))/w100*100,H_*.17,zone/2.12),40,230);thh.style.fontSize=hs_.toFixed(1)+"px";bh9=th.offsetHeight;thP.y=Math.round(nh+10+Math.max(0,(zone-bh9)*.56))}
@@ -2852,7 +2875,7 @@ function lineStageA(id){var sec=$("#"+id);if(!sec)return;
     G={W:W_,H:H_,narrow:narrow,stk:stk,gx:gx,gy:gy,nh:nh,Hc:Hc,fs:Hc/cap,fam:FAM,gl:gl,segs:segs,tot:tot,x0:x0,xR:xR,far:far||1,ss:ss,
        b0:{x:(W_-bw*s0)/2,y:Math.round(nh+(gy-nh)*(narrow?.2:.24)-bh*s0/2),s:s0},b1:{x:(W_-bw*s1)/2,y:y1,s:s1},q:{x:(W_-qw*sq)/2,y:qy,s:sq},qk:qk,
        ah:ans.offsetHeight,aw:ans.offsetWidth,aT:aT,rG:rG,aH:aH,rT:rT,tgW:tw,tgx:tgx,tby:tby,as0:as0,aceW:aw,NM:NMp,chP:chP,thP:thP,our:our,SG:SG,trv:{bE:bE,Xc:Xc},street:street,sP:sP,bxP:bxP,txR:Math.max(rT.x+rw*sR,gx+Math.min(W_*.45,640))+10,bcx:bcx,bs0:bs0,nT:nT,sT:sT,sR:sR,stars:stars};
-    UC=-99;window.__LN={ss:ss,gy:gy};onS()}
+    if(!had_)UC=-99;window.__LN={ss:ss,gy:gy};onS();if(had_)frame(UC)}
 
   function penAt(len){var S=G.segs,p=S[0].a,n;for(n=0;n<S.length;n++){var s=S[n];if(len<=s.c0)break;var f=Math.min(1,(len-s.c0)/s.L);p=[lerp(s.a[0],s.b[0],f),lerp(s.a[1],s.b[1],f)]}return p}
   /* the mark in the bar is a four-point star: the point that wrote the name opens into it as it arrives */
@@ -2888,7 +2911,7 @@ function lineStageA(id){var sec=$("#"+id);if(!sec)return;
        The page goes a shade duller for it, so that the light can be seen */
     var lo=u<K.sink[1]?1-smooth(sk/.2):0,lall=lo*smooth((t1-WV[0])/1.05);
     if(lall>.004){x.setTransform(D,0,0,D,0,0);g=x.createLinearGradient(0,G.nh,0,gy);g.addColorStop(0,"rgba(111,95,82,0)");g.addColorStop(.55,"rgba(111,95,82,"+(.085*lall).toFixed(3)+")");g.addColorStop(1,"rgba(111,95,82,"+(.13*lall).toFixed(3)+")");x.globalAlpha=1;x.fillStyle=g;x.fillRect(0,0,W_,gy);
-      x.fillStyle="rgba(111,95,82,"+(.07*lall).toFixed(3)+")";x.fillRect(0,gy,W_,H_-gy)}
+      x.fillStyle="rgba(111,95,82,"+(.07*lall).toFixed(3)+")";x.fillRect(0,gy,W_,H_-gy)}var ap_=tri(mixc(mixc(gnd,[0,0,0],.25*kd*(1-cq)),[111,95,82],.07*Math.max(0,lall)));if(st._ap!==ap_){st._ap=ap_;st.style.setProperty("--ap",ap_)}
     b1I.forEach(function(e,j){var o=lerp(.4,1,smooth((t1-WV[j]+.06)/.3));if(e._o!==o){e._o=o;e.style.opacity=o.toFixed(3)}});
     if(sk<1)L.items.forEach(function(it){var F=it.F,ox=W_/2+it.U*G.ss,e=clamp(sk*1.5-(1-Math.min(1,Math.abs(it.mid)/G.far))*.5,0,1);if(e>=1||ox+F.x1*G.ss<-6||ox+F.x0*G.ss>W_+6)return;x.setTransform(G.ss*D,0,0,G.ss*D,ox*D,gy*D);
         if(lo>.004){var xn=clamp((ox+(F.x0+F.x1)/2*G.ss)/W_,0,1),lf=(smooth((t1-WV[0]-xn*.24)/.26)+smooth((t1-WV[1]-xn*.24)/.26)+smooth((t1-WV[2]-xn*.24)/.26))/3;
@@ -2903,7 +2926,7 @@ function lineStageA(id){var sec=$("#"+id);if(!sec)return;
     var g0x=G.gl[0].x+G.gl[0].l*Hc;if(tau>0&&na>.004)G.gl.forEach(function(q,li){var dv=ease((tau-TW.dv0-li*TW.dvs)/TW.dvd),sa2=(1-smooth(dv*1.35))*na;
         if(sa2>.01&&nf<=0){x.setTransform(D,0,0,-D,0,gy*D);x.beginPath();var pen=false;G.segs.forEach(function(s){if(s.li!==li)return;if(!s.d||len<=s.c0){pen=false;return}var f=Math.min(1,(len-s.c0)/s.L);if(!pen)x.moveTo(s.a[0],s.a[1]);x.lineTo(lerp(s.a[0],s.b[0],f),lerp(s.a[1],s.b[1],f));pen=f>=1});
           x.lineJoin="round";x.lineCap="round";x.lineWidth=G.narrow?1.3:1.6;x.globalAlpha=sa2;x.strokeStyle=inkS;x.stroke()}
-        if(dv>.002){x.save();x.setTransform(ns*D,0,0,ns*D,(lerp(g0x,G.gl[0].nx,nf)+ns*lerp(q.x+q.l*Hc-g0x,(q.nx-G.gl[0].nx)/G.nT.s,nf))*D,nyy*D);x.beginPath();x.rect(-Hc*.3,-Hc*1.08*dv-2,q.w*Hc+Hc*.6,Hc*1.08*dv+3);x.clip();x.font="300 "+G.fs.toFixed(2)+"px "+G.fam;x.textAlign="left";x.textBaseline="alphabetic";x.fillStyle=inkS;x.globalAlpha=Math.min(1,dv*1.6)*na;x.fillText(q.ch,0,0);x.restore()}});
+        if(dv>.002){x.save();x.setTransform(ns*D,0,0,ns*D,(lerp(g0x,G.gl[0].nx,nf)+ns*lerp(q.x+q.l*Hc-g0x,(q.nx-G.gl[0].nx)/G.nT.s,nf))*D,nyy*D);var fl_=inkS;if(dv<1){var e_=dv*1.3;fl_=x.createLinearGradient(0,0,0,-Hc*1.1);fl_.addColorStop(0,rgb(ink,1));fl_.addColorStop(clamp(e_-.3,0,1),rgb(ink,1));fl_.addColorStop(clamp(e_,0,1),rgb(ink,0));fl_.addColorStop(1,rgb(ink,0))}x.font="300 "+G.fs.toFixed(2)+"px "+G.fam;x.textAlign="left";x.textBaseline="alphabetic";x.fillStyle=fl_;x.globalAlpha=Math.min(1,dv*1.6)*na;x.fillText(q.ch,0,0);x.restore()}});
     /* ours, in three: the outline, the detail, the light. The fronts beside it are there from the first, barely */
     var bz=G.bs0*zm,box=G.bcx+(fo-112)*G.bs0-fo*bz;if(pK>0)box=lerp(box,G.bxP,pq);if(wK>0)box=lerp(box,G.trv.bE,wq);var F=PF,k=F.k,head=null,ccx=box+112*bz;
     if(aK>0){var nb=clamp((eK-.6)/.32,0,1),gh=smooth((aK-.05)/.3);
@@ -2976,7 +2999,7 @@ function lineStageA(id){var sec=$("#"+id);if(!sec)return;
     /* it follows the scroll, but no faster than can be watched: after a long throw of the page it plays through to where the page has stopped */
     var mx_=Math.max(.02,4.4*(dt||.016)),ut=UT;
     /* what everyone has, and then the question: said in their own time. The street does not start to go until the question has landed */
-    if(!calm&&TAU1<T1.go&&UT>K.sink[0]){if(UT-UC>5)TAU1=T1.end;else{ut=K.sink[0];busy=true}}d=ut-UC;
+    if(!calm&&TAU1<T1.go&&UT>K.sink[0]){if(UT-UC>5)TAU1=T1.end;else{ut=K.sink[0];busy=true}}else if(!calm&&TAU<TW.end&&UT>K.hand[0]-.1){if(UT-UC>5)TAU=TW.end;else{ut=K.hand[0]-.1;busy=true}}d=ut-UC;
     /* and when it does go, it goes at a pace that can be watched, however far ahead the page is */
     var mx2=d>0&&UC<K.sink[1]&&UC>=K.sink[0]-.02?Math.min(mx_,1.2*(dt||.016)):mx_;
     if(Math.abs(d)<.0008||UT<0||Math.abs(d)>5)UC=ut;else{UC+=clamp(d*.17,-mx2,mx2);busy=true}
@@ -2987,7 +3010,7 @@ function lineStageA(id){var sec=$("#"+id);if(!sec)return;
     /* what comes after them waits for them: the view does not stand back from a front that is not yet lit */
     var tp=CT>=2.999?UC:Math.min(UC,K.P[0]);if(UPe<-90||Math.abs(tp-UPe)<.0008||Math.abs(tp-UPe)>5)UPe=tp;else{UPe+=clamp((tp-UPe)*.17,-mx_,mx_);busy=true}
     if(IN){if(TAU1<T1.end){TAU1=Math.min(T1.end,TAU1+dt*(UT>K.sink[0]+2.2?2.6:UT>K.sink[0]-.05?1.5:1));busy=true}}else if(OUT)TAU1=0;
-    if(UC>=K.wr){if(TAU<TW.end){TAU=Math.min(TW.end,TAU+dt*(UC>=K.hand[0]-.06?9:1));busy=true}}else if(UC<K.wr-.14)TAU=0;
+    if(UC>=K.wr){if(TAU<TW.end){TAU=Math.min(TW.end,TAU+dt*(UT>K.hand[0]+.25?1.5:1));busy=true}}else if(UC<K.wr-.14)TAU=0;
     frame(UC);if(busy)raf=requestAnimationFrame(tick);else last=0}
   function onS(){if(!G)return;var r=tr.getBoundingClientRect(),vh=window.innerHeight;if(r.bottom<-80||r.top>vh+80){if(LNH){LNH=false;brand._o=1;brand.style.opacity="";nv._c=false;nv.classList.remove("q9-clr")}return}UT=clamp(-r.top/Math.max(1,r.height-G.H),0,1)*(K.end+FD)-FD;IN=FD?UT>=-.04:r.top<vh*.35;OUT=FD?r.top>2:r.top>vh*.75;
     if(calm||UC<-90){UC=UT;CT=calm?armed(UT):(UT>=K.A[1]?1:0)+(UT>=K.C[1]?1:0)+(UT>=K.E[1]?1:0);OKN=[CT>=2,CT>=3];MK=[null,null];UPe=CT>=3?UT:Math.min(UT,K.P[0]);TAU=UT>=K.wr?TW.end:0;TAU1=(calm?IN:UT>.5)?T1.end:0;frame(UC);if(calm)return}if(!raf)raf=requestAnimationFrame(tick)}
